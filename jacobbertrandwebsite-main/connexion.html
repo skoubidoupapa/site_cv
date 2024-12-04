@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Identification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 400px;
+            background-color: #1f1f1f;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #b0b0b0;
+        }
+
+        label {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #b0b0b0;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #b0b0b0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #a0a0a0;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .link a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link a:hover {
+            color: #a0a0a0;
+            text-decoration: underline;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Formulaire de connexion -->
+        <div class="form-container active" id="login-form">
+            <h2>Connexion</h2>
+            <form action="second-page.html" method="GET">
+                <label for="username-email">Email ou Nom d'utilisateur</label>
+                <input type="text" id="username-email" name="username-email" required>
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="btn">Se connecter</button>
+            </form>
+            <div class="link">
+                <p>Pas de compte ? <a href="javascript:void(0);" onclick="toggleForm()">Créer un compte</a></p>
+            </div>
+        </div>
+
+        <!-- Formulaire de création de compte -->
+        <div class="form-container" id="signup-form">
+            <h2>Créer un compte</h2>
+            <form action="#" method="POST">
+                <label for="new-email">Email</label>
+                <input type="email" id="new-email" name="new-email" required>
+                <label for="new-username">Nom d'utilisateur</label>
+                <input type="text" id="new-username" name="new-username" required>
+                <label for="new-password">Mot de passe</label>
+                <input type="password" id="new-password" name="new-password" required>
+                <label for="full-name">Nom complet</label>
+                <input type="text" id="full-name" name="full-name" required>
+                <button type="submit" class="btn">S'inscrire</button>
+            </form>
+            <div class="link">
+                <p>Déjà un compte ? <a href="javascript:void(0);" onclick="toggleForm()">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour basculer entre les formulaires
+        function toggleForm() {
+            var loginForm = document.getElementById('login-form');
+            var signupForm = document.getElementById('signup-form');
+            loginForm.classList.toggle('active');
+            signupForm.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
